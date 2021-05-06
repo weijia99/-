@@ -9,22 +9,21 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_hosp</artifactId>
-
+    <artifactId>service-cmn</artifactId>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>2.1.1</version>
         </dependency>
-
-
-
-
     </dependencies>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <build>
-        <finalName>service-hosp</finalName>
+        <finalName>service-cmn</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -32,4 +31,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
