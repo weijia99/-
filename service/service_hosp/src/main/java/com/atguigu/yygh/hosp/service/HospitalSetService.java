@@ -10,4 +10,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface HospitalSetService extends IService<HospitalSet> {
 
+    String getSignKey(String hoscode);
 }
