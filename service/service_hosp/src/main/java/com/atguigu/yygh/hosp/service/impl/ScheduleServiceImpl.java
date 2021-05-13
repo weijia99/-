@@ -8,6 +8,7 @@ import com.atguigu.yygh.vo.hosp.ScheduleQueryVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,6 +19,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Autowired
     private ScheduleRepository scheduleRepository;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
     public void save(Map<String, Object> paramMap) {
@@ -61,6 +65,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         Page<Schedule> all = scheduleRepository.findAll(example, pageable);
         return all;
+    }
+
+    @Override
+    public Map<String, Object> getRuleSchedule(long page, long limit, String hoscode, String depcode) {
+        return null;
     }
 
     @Override
