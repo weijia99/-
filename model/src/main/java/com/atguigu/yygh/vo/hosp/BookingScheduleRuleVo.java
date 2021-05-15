@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -23,6 +24,7 @@ public class BookingScheduleRuleVo {
 	
 	@ApiModelProperty(value = "可预约日期")
 	@JsonFormat(pattern = "yyyy-MM-dd")
+
 	private Date workDate;
 
 	@ApiModelProperty(value = "可预约日期")

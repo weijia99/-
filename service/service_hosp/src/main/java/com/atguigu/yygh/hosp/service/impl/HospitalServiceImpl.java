@@ -58,6 +58,15 @@ public class HospitalServiceImpl implements HospitalService {
     }
 
     @Override
+    public String getHospName(String hoscode) {
+        Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
+        if (hospital!=null){
+            return hospital.getHosname();
+        }
+        return null;
+    }
+
+    @Override
     public Map<String, Object> getHospById(String id) {
         Map<String, Object> result = new HashMap<>();
         Hospital hospital = this.setHospitalHosType(hospitalRepository.findById(id).get());
