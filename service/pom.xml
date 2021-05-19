@@ -16,6 +16,7 @@
         <module>service_hosp</module>
         <module>service-cmn</module>
         <module>service-user</module>
+        <module>service-msm</module>
 
     </modules>
     <dependencies>

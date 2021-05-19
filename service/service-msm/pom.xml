@@ -9,13 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-user</artifactId>
+    <artifactId>service-msm</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.atguigu</groupId>
-            <artifactId>service-cmn-client</artifactId>
-            <version>1.0</version>
+            <groupId>com.cloopen</groupId>
+            <artifactId>java-sms-sdk</artifactId>
+            <version>1.0.3</version>
         </dependency>
+
     </dependencies>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
