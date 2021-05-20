@@ -25,6 +25,14 @@ public class UserInfoServiceImpl extends
     private RedisTemplate<String ,String> redisTemplate;
 
     @Override
+    public UserInfo selectWxInfoOpenId(String openid) {
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("openid",openid);
+        UserInfo userInfo = baseMapper.selectOne(queryWrapper);
+        return userInfo;
+    }
+
+    @Override
     public Map<String, Object> loginUser(LoginVo loginVo) {
         String phone = loginVo.getPhone();
         String code = loginVo.getCode();
@@ -44,7 +52,20 @@ public class UserInfoServiceImpl extends
         // 判断是否是第一次登录:根据手机号查询数据库
         QueryWrapper<UserInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("phone", phone);
-        UserInfo userInfo = baseMapper.selectOne(wrapper);
+//        UserInfo userInfo = baseMapper.selectOne(wrapper);
+        //绑定手机号码
+        UserInfo userInfo=null;
+        if(!StringUtils.isEmpty(loginVo.getOpenid())) {
+            userInfo = this.selectWxInfoOpenId(loginVo.getOpenid());
+            if(null != userInfo) {
+                userInfo.setPhone(loginVo.getPhone());
+                this.updateById(userInfo);
+            } else {
+                throw new HospitalException(ResultCodeEnum.DATA_ERROR);
+            }
+        }
+
+
 
         // 如果是第一次使用手机登录
         if (userInfo == null) {
